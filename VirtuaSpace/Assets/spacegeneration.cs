@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InfinteStarfield : MonoBehaviour {
+public class spacegeneration : MonoBehaviour {
 	private Transform tx;
 	private ParticleSystem.Particle[] points;
 	
