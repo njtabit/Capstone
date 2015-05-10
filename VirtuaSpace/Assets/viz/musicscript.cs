@@ -6,7 +6,7 @@ public class musicscript : MonoBehaviour {
 	//An AudioSource object so the music can be played
 	private AudioSource aSource;
 	//A float array that stores the audio samples
-	public float[] samples = new float[128];
+	public float[] samples = new float[256];
 	//A renderer that will draw a .ine at the screen
 	private LineRenderer lRenderer;
 	//A reference to the cube prefab
@@ -19,6 +19,8 @@ public class musicscript : MonoBehaviour {
 	private Transform[] cubesTransform;
 	//The velocity that the cubes will drop
 	private Vector3 gravity = new Vector3(0.0f,0.25f,0.0f);
+	//Material attached to cubes
+	private Material mat;
 
 	void Awake () {
 		//Get and store a reference to the following attached components:
@@ -28,6 +30,8 @@ public class musicscript : MonoBehaviour {
 		this.lRenderer = GetComponent<LineRenderer> ();
 		//Transform
 		this.goTransform = GetComponent<Transform> ();
+		//Mat
+		this.mat = GetComponent<Renderer> ().material;
 	}
 
 	// Use this for initialization
@@ -57,12 +61,14 @@ public class musicscript : MonoBehaviour {
 	void Update () {
 		//Obtain the samples from the frequency bands of the attached AudioSource
 		aSource.GetSpectrumData (this.samples, 0, FFTWindow.BlackmanHarris);
+		float sum = 0;
 
 		//For each sample
 		for (int i=0; i<samples.Length; i++) {
 			/*Set the cubePos Vector3 to the same value as the position of the corresponding
 			 * cube.  However, set its Y element according to the current sample.*/
 			cubePos.Set (cubesTransform [i].position.x, Mathf.Clamp (samples [i] * (50 + i * i), 0, 50), cubesTransform [i].position.z);
+			sum += samples [i] * samples [i];
 
 			//If the new cubePos.y is greater than the current cube position
 			if (cubePos.y >= cubesTransform [i].position.y) {
@@ -79,5 +85,7 @@ public class musicscript : MonoBehaviour {
 			 * been subtracted by the current game object position.*/
 			lRenderer.SetPosition (i, cubePos - goTransform.position);
 		}
+		float rms = Mathf.Sqrt (sum / 256);
+		mat.color = new Vector4 (0 + rms * 50f, 0, 1 - rms * 50f, 1);
 	}
 }
