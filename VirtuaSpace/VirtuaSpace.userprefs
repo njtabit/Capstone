@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Cardboard\Scripts\CardboardHead.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\spacegeneration.cs">
     <Files>
-      <File FileName="Assets\Cardboard\Legacy\Scripts\CardboardOnGUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Cardboard\Scripts\CardboardHead.cs" Line="1" Column="1" />
+      <File FileName="Assets\spacegeneration.cs" Line="1" Column="1" />
       <File FileName="Assets\ClickMove.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" Line="1" Column="1" />
     </Files>
