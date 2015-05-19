@@ -20,10 +20,15 @@ public class TeleportLegacyUI : MonoBehaviour {
 	private CardboardHead head;
 	private bool mPreviousChoosen;
 	private GameObject mainCamera;
+	private bool reticleMode;
+	private float timer = 0.0f;
+	private float timerMax = 3.0f;
 
   void Awake() {
   	head = Camera.main.GetComponent<StereoController>().Head;
 	mainCamera = GameObject.Find("CardboardMain");
+	reticleMode = VRTarget.reticleMode;
+	timer = timerMax ;
 //    CardboardOnGUI.IsGUIVisible = true;
 //    CardboardOnGUI.onGUICallback += this.OnGUI;
   }
@@ -37,24 +42,22 @@ public class TeleportLegacyUI : MonoBehaviour {
 					if (isLookedAt) {
 						mPreviousChoosen = true;
 						VRTarget.instance.TargetChosen(isLookedAt);
+						if (reticleMode) {
+							timer -= Time.deltaTime;
+							if (timer < 0) {
+								moveToTarget();	
+
+								//reset timer
+								timer = timerMax;
+							}
+						}
 					} else if (mPreviousChoosen) {
 						mPreviousChoosen = false;
 						VRTarget.instance.TargetChosen(isLookedAt);
 					}
 				}
 			if (Cardboard.SDK.CardboardTriggered && isLookedAt) {
-				//Move to target
-				CameraMove.newPosition = this.transform.position;
-				if (this.transform.childCount > 0) {
-					Transform child = transform.GetChild(0);
-					CameraMove.newPosition += Vector3.up*(child.GetComponent<MeshFilter>().mesh.bounds.size.z*child.transform.localScale.z/2f + 100f); //Upward adjustment
-					Debug.Log(this.name);
-					Debug.Log(child.GetComponent<MeshFilter>().mesh.bounds.size.z);
-				} else {
-					CameraMove.newPosition += Vector3.up*(GetComponent<MeshFilter>().mesh.bounds.size.z*transform.localScale.z/2f + 100f); //Upward adjustment
-					Debug.Log(this.name);
-					Debug.Log(GetComponent<MeshFilter>().mesh.bounds.size.z);
-				}
+				moveToTarget();
 			}
 		}
 //    bool isLookedAt = GetComponent<Collider>().Raycast(head.Gaze, out hit, Mathf.Infinity);
@@ -63,6 +66,19 @@ public class TeleportLegacyUI : MonoBehaviour {
 //      TeleportRandomly();
 //    }
   }
+
+	public void moveToTarget() {
+		//Move to target
+		CameraMove.newPosition = this.transform.position;
+		if (this.transform.childCount > 0) {
+			Transform child = transform.GetChild(0);
+			CameraMove.newPosition += Vector3.up*(child.GetComponent<MeshFilter>().mesh.bounds.size.z*child.transform.localScale.z/2f + 100f); //Upward adjustment
+			Debug.Log(this.name);
+		} else {
+			CameraMove.newPosition += Vector3.up*(GetComponent<MeshFilter>().mesh.bounds.size.z*transform.localScale.z/2f + 100f); //Upward adjustment
+			Debug.Log(this.name);
+		}
+	}
 
 //  void OnGUI() {
 ////    if (!CardboardOnGUI.OKToDraw(this)) {

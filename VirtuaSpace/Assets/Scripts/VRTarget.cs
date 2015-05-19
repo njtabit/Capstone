@@ -6,6 +6,7 @@ public class VRTarget : MonoBehaviour {
 	private static VRTarget mInstance;
 	public static VRTarget instance {get{return mInstance;}}
 	public SpriteRenderer targetSprite;
+	public static bool reticleMode = false;
 
 	// Use this for initialization
 	void Start () {

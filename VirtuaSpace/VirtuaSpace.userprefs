@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ClickMove.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TeleportLegacyUI.cs">
     <Files>
-      <File FileName="Assets\Scripts\ClickMove.cs" Line="20" Column="5" />
-      <File FileName="Assets\Scripts\VRTarget.cs" Line="17" Column="37" />
-      <File FileName="Assets\Scripts\TeleportLegacyUI.cs" Line="51" Column="1" />
+      <File FileName="Assets\Scripts\TeleportLegacyUI.cs" Line="21" Column="32" />
+      <File FileName="Assets\Scripts\ClickMove.cs" Line="7" Column="2" />
+      <File FileName="Assets\Scripts\VRTarget.cs" Line="11" Column="32" />
+      <File FileName="Assets\Scripts\CameraMove.cs" Line="5" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
