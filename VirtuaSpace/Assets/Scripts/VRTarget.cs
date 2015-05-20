@@ -17,7 +17,7 @@ public class VRTarget : MonoBehaviour {
 
 	public void TargetChosen(bool choosen) {
 		if (choosen) {
-			targetSprite.color = Color.red;
+			targetSprite.color = Color.white;
 		} else {
 			targetSprite.color = new Color(75/255f,125/255f,193/255f,1f);
 		}

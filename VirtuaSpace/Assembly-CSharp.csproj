@@ -59,10 +59,12 @@
      <Compile Include="Assets\Cardboard\Scripts\GazeInputModule.cs" />
      <Compile Include="Assets\Cardboard\Scripts\RadialUndistortionEffect.cs" />
      <Compile Include="Assets\Cardboard\Scripts\StereoController.cs" />
+     <Compile Include="Assets\Scripts\AutoRotate.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\ClickMove.cs" />
      <Compile Include="Assets\Scripts\TeleportLegacyUI.cs" />
      <Compile Include="Assets\Scripts\VRTarget.cs" />
+     <Compile Include="Assets\Scripts\music.cs" />
      <Compile Include="Assets\Scripts\spacegeneration.cs" />
      <Compile Include="Assets\viz\musicscript.cs" />
      <Compile Include="Assets\viz\musicscript2.cs" />
