@@ -34,13 +34,17 @@ public class music: MonoBehaviour {
 
 		ParticleSystem.Particle []ParticleList = new ParticleSystem.Particle[m_currentParticleEffect.particleCount];
 		m_currentParticleEffect.GetParticles(ParticleList);
-		m_currentParticleEffect.emissionRate = (int)rms*50 + 5;
+		m_currentParticleEffect.emissionRate = (int)rms*50 + 5; 	//number of particles increase
 		
 		for(int i = 0; i < ParticleList.Length; ++i)
 		{
-			ParticleList[i].size = rms*400+250;
-			ParticleList[i].velocity = new Vector3(rms*300,0,0);
+			ParticleList[i].size = rms*400+250;						//size increase
+			ParticleList[i].velocity = new Vector3(rms*3000,0,0); 	//speed increase
 		}        
 		m_currentParticleEffect.SetParticles(ParticleList, m_currentParticleEffect.particleCount);
+
+		//Molten Halo Music Effect
+		//GameObject.Find ("MoltenHalo").GetComponent<Light>().range = rms * 300 + 1200;
+
 	}
 }
