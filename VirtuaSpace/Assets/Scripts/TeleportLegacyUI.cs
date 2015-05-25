@@ -45,7 +45,7 @@ public class TeleportLegacyUI : MonoBehaviour {
 					if (isLookedAt) {
 						mPreviousChoosen = true;
 						VRTarget.instance.TargetChosen(isLookedAt);
-						if (reticleModeToggle) {
+						if (reticleModeToggle && reticleMode) {
 							timer -= Time.deltaTime;
 							if (timer < 0) {
 								moveToTarget();	
@@ -55,7 +55,7 @@ public class TeleportLegacyUI : MonoBehaviour {
 					} else if (mPreviousChoosen) {
 						mPreviousChoosen = false;
 						VRTarget.instance.TargetChosen(isLookedAt);
-					} else if (!isLookedAt) {
+					} else if (!isLookedAt && reticleMode) {
 						timer = timerMax;
 					}
 				}

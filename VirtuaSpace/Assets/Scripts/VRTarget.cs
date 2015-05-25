@@ -32,7 +32,7 @@ public class VRTarget : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.H)) { 
 			gameObject.SetActive(false);
 		}
-		if (Cardboard.SDK.CardboardTriggered) {
+		if (Cardboard.SDK.CardboardTriggered && reticleMode) {
 			reticleModeToggle = !reticleModeToggle;
 			if (!reticleModeToggle) {
 				targetSprite.gameObject.SetActive(false);
@@ -44,10 +44,12 @@ public class VRTarget : MonoBehaviour {
 	}
 
 	public void TargetChosen(bool choosen) {
-		if (choosen && reticleModeToggle) {
+		if (choosen) {
 			targetSprite.color = hoverColor;
-			animSprite.transform.localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(1,1,1), t);
-			t += Time.deltaTime/timer;
+			if (reticleMode && reticleModeToggle) {
+				animSprite.transform.localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(1,1,1), t);
+				t += Time.deltaTime/timer;
+			}
 			//targetSprite.color = new Color(75/255f,125/255f,193/255f,1f);
 		} else {
 			targetSprite.color = targetColor;
