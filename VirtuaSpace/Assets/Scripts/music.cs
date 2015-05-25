@@ -44,15 +44,16 @@ public class music: MonoBehaviour {
 		ParticleSystem.Particle []ParticleList = new ParticleSystem.Particle[m_currentParticleEffect.particleCount];
 		m_currentParticleEffect.GetParticles(ParticleList);
 		m_currentParticleEffect.emissionRate = (int)rms*30 + 8; 	//number of particles increase
-		
+
+		float vari = rmsBeat*3000+200;
 		for(int i = 0; i < ParticleList.Length; ++i)
 		{
 			if (i < ParticleList.Length/2) {
-				ParticleList[i].size = rmsBeat*600+230;						//size increase
-				ParticleList[i].velocity = new Vector3(rmsBeat*6000+200,0,0); 	//speed increase
+				ParticleList[i].size = rmsBeat*700+230;						//size increase
+				ParticleList[i].velocity = new Vector3(rmsBeat*6000+200,Random.Range(-vari,vari),Random.Range(-vari,vari)); 	//speed increase
 			} else {
-				ParticleList[i].size = rms*600+230;						//size increase
-				ParticleList[i].velocity = new Vector3(rms*6000+200,0,0); 	//speed increase
+				ParticleList[i].size = rms*700+230;						//size increase
+				ParticleList[i].velocity = new Vector3(rmsBeat*6000+200,Random.Range(-vari,vari),Random.Range(-vari,vari)); 	//speed increase
 			}
 		}        
 		m_currentParticleEffect.SetParticles(ParticleList, m_currentParticleEffect.particleCount);
