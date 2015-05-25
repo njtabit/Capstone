@@ -30,16 +30,30 @@ public class music: MonoBehaviour {
 			sum += samples [i] * samples [i];
 		}
 		float rms = Mathf.Sqrt (sum / 256f) * 50f;
-		Debug.Log (rms*200);
+
+		sum = 0;
+		for (int i=0; i<samples.Length/3; i++) {
+			sum += samples [i] * samples [i];
+		}
+		float rmsBeat = Mathf.Sqrt (sum / 256f) * 50f;
+
+		//rms = rmsBeat;
+
+		//Debug.Log (rms*200);
 
 		ParticleSystem.Particle []ParticleList = new ParticleSystem.Particle[m_currentParticleEffect.particleCount];
 		m_currentParticleEffect.GetParticles(ParticleList);
-		m_currentParticleEffect.emissionRate = (int)rms*50 + 5; 	//number of particles increase
+		m_currentParticleEffect.emissionRate = (int)rms*30 + 8; 	//number of particles increase
 		
 		for(int i = 0; i < ParticleList.Length; ++i)
 		{
-			ParticleList[i].size = rms*400+250;						//size increase
-			ParticleList[i].velocity = new Vector3(rms*3000,0,0); 	//speed increase
+			if (i < ParticleList.Length/2) {
+				ParticleList[i].size = rmsBeat*600+230;						//size increase
+				ParticleList[i].velocity = new Vector3(rmsBeat*6000+200,0,0); 	//speed increase
+			} else {
+				ParticleList[i].size = rms*600+230;						//size increase
+				ParticleList[i].velocity = new Vector3(rms*6000+200,0,0); 	//speed increase
+			}
 		}        
 		m_currentParticleEffect.SetParticles(ParticleList, m_currentParticleEffect.particleCount);
 

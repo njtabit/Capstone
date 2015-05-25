@@ -21,19 +21,22 @@ public class TeleportLegacyUI : MonoBehaviour {
 	private bool mPreviousChoosen;
 	private GameObject mainCamera;
 	private bool reticleMode;
+	private bool reticleModeToggle;
 	private float timer = 0.0f;
-	private float timerMax = 3.0f;
+	public static float timerMax = 2.0f;
 
   void Awake() {
   	head = Camera.main.GetComponent<StereoController>().Head;
 	mainCamera = GameObject.Find("CardboardMain");
 	reticleMode = VRTarget.reticleMode;
+	reticleModeToggle = VRTarget.reticleModeToggle;
 	timer = timerMax ;
 //    CardboardOnGUI.IsGUIVisible = true;
 //    CardboardOnGUI.onGUICallback += this.OnGUI;
   }
 
   void Update() {
+	reticleModeToggle = VRTarget.reticleModeToggle;
     RaycastHit hit;
 		Collider collider = GetComponent<Collider> ();
 		if (collider && head) {
@@ -42,22 +45,24 @@ public class TeleportLegacyUI : MonoBehaviour {
 					if (isLookedAt) {
 						mPreviousChoosen = true;
 						VRTarget.instance.TargetChosen(isLookedAt);
-						if (reticleMode) {
+						if (reticleModeToggle) {
 							timer -= Time.deltaTime;
 							if (timer < 0) {
 								moveToTarget();	
-
-								//reset timer
-								timer = timerMax;
+								timer = timerMax; //reset timer
 							}
 						}
 					} else if (mPreviousChoosen) {
 						mPreviousChoosen = false;
 						VRTarget.instance.TargetChosen(isLookedAt);
+					} else if (!isLookedAt) {
+						timer = timerMax;
 					}
 				}
 			if (Cardboard.SDK.CardboardTriggered && isLookedAt) {
-				moveToTarget();
+				if (!reticleMode) {
+					moveToTarget();
+				}
 			}
 		}
 //    bool isLookedAt = GetComponent<Collider>().Raycast(head.Gaze, out hit, Mathf.Infinity);
