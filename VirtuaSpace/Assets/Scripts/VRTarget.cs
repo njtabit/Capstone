@@ -49,6 +49,9 @@ public class VRTarget : MonoBehaviour {
 			if (reticleMode && reticleModeToggle) {
 				animSprite.transform.localScale = Vector3.Lerp(new Vector3(0,0,0),new Vector3(1,1,1), t);
 				t += Time.deltaTime/timer;
+			} else if (!reticleModeToggle) {
+				animSprite.transform.localScale = new Vector3(0,0,0);
+				t = 0;
 			}
 			//targetSprite.color = new Color(75/255f,125/255f,193/255f,1f);
 		} else {

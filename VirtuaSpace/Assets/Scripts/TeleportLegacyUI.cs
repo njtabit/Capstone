@@ -63,6 +63,9 @@ public class TeleportLegacyUI : MonoBehaviour {
 				if (!reticleMode) {
 					moveToTarget();
 				}
+				if (!reticleModeToggle) {
+					timer = timerMax;
+				}
 			}
 		}
 //    bool isLookedAt = GetComponent<Collider>().Raycast(head.Gaze, out hit, Mathf.Infinity);
