@@ -15,7 +15,7 @@ public class music: MonoBehaviour {
 		//Get and store a reference to the following attached components:
 		//AudioSource
 		this.aSource = GetComponent<AudioSource> ();
-		ParticleSystem m_currentParticleEffect = (ParticleSystem)GameObject.Find("Fireflies").GetComponent("ParticleSystem");
+		m_currentParticleEffect = (ParticleSystem)GameObject.Find("Fireflies").GetComponent("ParticleSystem");
 
 	}
 

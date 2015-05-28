@@ -17,6 +17,7 @@ public class VRTarget : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		Handheld.ClearShaderCache ();
 		if (mInstance == null) {
 			mInstance = this;
 		}

@@ -19,7 +19,7 @@ using System.Collections;
 public class TeleportLegacyUI : MonoBehaviour {
 	private CardboardHead head;
 	private bool mPreviousChoosen;
-	private GameObject mainCamera;
+	//private GameObject mainCamera;
 	private bool reticleMode;
 	private bool reticleModeToggle;
 	private float timer = 0.0f;
@@ -27,7 +27,7 @@ public class TeleportLegacyUI : MonoBehaviour {
 
   void Awake() {
   	head = Camera.main.GetComponent<StereoController>().Head;
-	mainCamera = GameObject.Find("CardboardMain");
+	//mainCamera = GameObject.Find("CardboardMain");
 	reticleMode = VRTarget.reticleMode;
 	reticleModeToggle = VRTarget.reticleModeToggle;
 	timer = timerMax ;
