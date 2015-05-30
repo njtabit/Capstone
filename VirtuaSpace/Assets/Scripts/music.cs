@@ -17,20 +17,15 @@ public class music: MonoBehaviour {
 		//Get and store a reference to the following attached components:
 		//AudioSource
 		this.aSource = GetComponent<AudioSource> ();
-<<<<<<< HEAD
 		ParticleSystem m_currentParticleEffect = (ParticleSystem)GameObject.Find("Fireflies").GetComponent("ParticleSystem");
 		endTime = Mathf.Infinity;
 		titleCard = GameObject.Find ("TitleCard");
-=======
 		m_currentParticleEffect = (ParticleSystem)GameObject.Find("Fireflies").GetComponent("ParticleSystem");
-
->>>>>>> origin/master
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (!aSource.isPlaying) {
-			Debug.Log(endTime);
 			if (Time.time < endTime) {
 				endTime = Time.time;
 			}
