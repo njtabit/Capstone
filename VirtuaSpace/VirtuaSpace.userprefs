@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\music.cs">
     <Files>
-      <File FileName="Assets\Scripts\music.cs" Line="11" Column="49" />
-      <File FileName="Assets\Scripts\VRTarget.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TeleportLegacyUI.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ClickMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\titleCard.cs" Line="18" Column="48" />
+      <File FileName="Assets\Scripts\music.cs" Line="32" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
