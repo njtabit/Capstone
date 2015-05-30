@@ -9,6 +9,8 @@ public class music: MonoBehaviour {
 	public float[] samples = new float[256];
 	public ParticleSystem m_currentParticleEffect;
 	private ParticleSystem.Particle[] ParticleList;
+	private float endTime;
+	private GameObject titleCard;
 
 
 	void Awake () {
@@ -16,11 +18,24 @@ public class music: MonoBehaviour {
 		//AudioSource
 		this.aSource = GetComponent<AudioSource> ();
 		ParticleSystem m_currentParticleEffect = (ParticleSystem)GameObject.Find("Fireflies").GetComponent("ParticleSystem");
-
+		endTime = Mathf.Infinity;
+		titleCard = GameObject.Find ("TitleCard");
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (!aSource.isPlaying) {
+			Debug.Log(endTime);
+			if (Time.time < endTime) {
+				endTime = Time.time;
+			}
+			if (Time.time - endTime >= 2) {
+				endTime = Mathf.Infinity;
+				titleCard.SetActive (true);
+				this.gameObject.SetActive (false);
+			}
+		}
+
 		//Obtain the samples from the frequency bands of the attached AudioSource
 		aSource.GetSpectrumData (this.samples, 0, FFTWindow.BlackmanHarris);
 		float sum = 0;
